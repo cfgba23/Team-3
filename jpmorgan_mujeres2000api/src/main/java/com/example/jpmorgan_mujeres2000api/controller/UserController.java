@@ -45,7 +45,7 @@ public class UserController {
     }
 
     @GetMapping("/user/add")
-    ResponseEntity<Object> getProposal(List<Proposal> proposalList){
+    ResponseEntity<Object> getProposal(@PathVariable List<Proposal> proposalList){
         return new ResponseEntity<>(userService.getProposal(proposalList),HttpStatus.OK);
     }
 }
