@@ -7,4 +7,5 @@ public interface ProposalService {
     void createProposal(Proposal proposal);
     void updateProposal(Long id, Proposal proposal);
     void deleteProposal(Long proposalId);
+
 }
