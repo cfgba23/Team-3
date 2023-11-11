@@ -1,9 +1,6 @@
 package com.example.jpmorgan_mujeres2000api.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -12,13 +9,14 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "members")
 public class User {
     @Id
-    private Long userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String dni;
     private String name;
     private String surname;
-    @ManyToMany(mappedBy = "userList")
+    @ManyToMany
     private List<Proposal> proposalList;
 }
