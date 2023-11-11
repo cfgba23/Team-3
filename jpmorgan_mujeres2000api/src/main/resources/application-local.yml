@@ -14,7 +14,8 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: create-drop
+      hbm2ddl:
+        auto: create-drop
   sql:
     init:
       mode: always

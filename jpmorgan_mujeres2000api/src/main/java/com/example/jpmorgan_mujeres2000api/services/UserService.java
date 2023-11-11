@@ -7,7 +7,7 @@ import com.example.jpmorgan_mujeres2000api.entity.User;
 import java.util.List;
 
 public interface UserService {
-    User getByUserId(Long userId);
+    User getById(Long userId);
     void createUser(User user);
     void deleteUser(Long userId);
 

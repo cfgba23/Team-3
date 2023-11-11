@@ -20,11 +20,15 @@ public class UserController {
 
     @GetMapping("/user/{id}")
     ResponseEntity<Object> getUser(@PathVariable Long id){
-        return new ResponseEntity<>(userService.getByUserId(id), HttpStatus.OK);
+        User user = userService.getById(id);
+        if (user == null){
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
     @PostMapping("/user")
-    ResponseEntity<Object> createUser(@RequestBody Object user){
-        userService.createUser((User) user);
+    ResponseEntity<Object> createUser(@RequestBody User user){
+        userService.createUser(user);
         return new ResponseEntity<>("User created", HttpStatus.CREATED);
     }
 
@@ -38,14 +42,5 @@ public class UserController {
         userService.addProposal(proposal,proposalList);
         return new ResponseEntity<>("Proposal added", HttpStatus.OK);
     }
-    @DeleteMapping("/user/delete")
-    ResponseEntity<Object> deleteProposal(@RequestBody Proposal proposal,@PathVariable List<Proposal> proposalList){
-        userService.deleteProposal(proposal,proposalList);
-        return new ResponseEntity<>("Proposal removed",HttpStatus.OK);
-    }
 
-    @GetMapping("/user/add")
-    ResponseEntity<Object> getProposal(@PathVariable List<Proposal> proposalList){
-        return new ResponseEntity<>(userService.getProposal(proposalList),HttpStatus.OK);
-    }
 }

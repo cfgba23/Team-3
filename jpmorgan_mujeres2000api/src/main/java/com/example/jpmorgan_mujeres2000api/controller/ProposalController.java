@@ -1,5 +1,6 @@
 package com.example.jpmorgan_mujeres2000api.controller;
 
+import com.example.jpmorgan_mujeres2000api.dto.ProposalDTO;
 import com.example.jpmorgan_mujeres2000api.entity.Proposal;
 import com.example.jpmorgan_mujeres2000api.services.ProposalService;
 import lombok.AllArgsConstructor;
@@ -20,14 +21,14 @@ public class ProposalController {
     }
 
     @PostMapping("/proposal")
-    ResponseEntity<Object> createProposal(@RequestBody Object proposal){
-        proposalService.createProposal((Proposal) proposal);
+    ResponseEntity<Object> createProposal(@RequestBody ProposalDTO proposal){
+        proposalService.createProposal(proposal);
         return new ResponseEntity<>("Proposal created", HttpStatus.CREATED);
     }
 
     @PutMapping("/proposal/update/{id}")
-    ResponseEntity<Object> updateProposal(@PathVariable Long id, @RequestBody Object proposal){
-        proposalService.updateProposal(id, (Proposal) proposal);
+    ResponseEntity<Object> updateProposal(@PathVariable Long id, @RequestBody ProposalDTO proposal){
+        proposalService.updateProposal(id, proposal);
         return new ResponseEntity<>("Proposal updated", HttpStatus.OK);
     }
 
